@@ -4,25 +4,27 @@ Maya 向けアニメーション支援ツール（Windows）。
 
 ソースコードは非公開です。配布物はコンパイル済みの `.pyc` とインストーラのみです。
 
-## 対応環境（このパッケージ）
+## ダウンロード（必須）
 
-| 項目 | 内容 |
-|------|------|
-| OS | Windows |
-| Maya | **2026 / 2027** |
-| その他 | 動かない場合は [Releases](../../releases) の説明を確認してください |
+**自分の Maya バージョン用の zip を [Releases](https://github.com/matu1004-ctrl/TraceMate/releases) から取得してください。**
+
+| Maya | ファイル |
+|------|----------|
+| 2026 | `TraceMate_Maya2026_Windows.zip` |
+| 2027 | `TraceMate_Maya2027_Windows.zip` |
+
+`.pyc` はバージョン専用です。違う年の zip では動きません。
 
 ## インストール
 
-1. このリポジトリを Clone / Download、または Releases の zip を解凍する  
+1. 上記 zip を解凍する  
 2. フォルダ内の **`install.mel` を Maya のビューポートへドラッグ＆ドロップ**  
 3. シェルフに **TraceMate** ボタンが追加される  
 4. ボタンを押して起動
 
 コピー先の例:
 
-`Documents\maya\2026\ja_JP\scripts\TraceMate\`  
-（Maya 2027 の場合はパス内の `2026` が `2027` になります）
+`Documents\maya\<バージョン>\ja_JP\scripts\TraceMate\`
 
 ## 使い方
 
@@ -30,7 +32,6 @@ Maya 向けアニメーション支援ツール（Windows）。
 
 ## 注意
 
-- `.pyc` は **ビルドした Maya のメジャーバージョン専用**です  
 - 改変したものを再配布しないでください（[LICENSE](LICENSE) 参照）  
 - アンインストール: 上記 `TraceMate` フォルダを削除し、シェルフの TraceMate ボタンを削除
 
