@@ -1,0 +1,16 @@
+# Never publish source
+*.py
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Author-only / local
+PUBLISH_GITHUB.md
+build_pyc_in_maya.py
+README_PYC.txt
+__pycache__/
+*.zip
