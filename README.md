@@ -1,8 +1,14 @@
 # Trace Mate
 
-Maya 向けアニメーション支援ツール（Windows）。
+Maya 向けアニメーション学習ヘルパー（Windows）。
 
 ソースコードは非公開です。配布物はコンパイル済みの `.pyc` とインストーラのみです。
+
+![作業画面の例](docs/images/03_overview_dual.jpg)
+
+## マニュアル
+
+👉 **[使い方マニュアル（第1稿）](docs/manual.md)**
 
 ## ダウンロード（必須）
 
@@ -19,21 +25,19 @@ Maya 向けアニメーション支援ツール（Windows）。
 
 1. 上記 zip を解凍する  
 2. フォルダ内の **`install.mel` を Maya のビューポートへドラッグ＆ドロップ**  
-3. シェルフに **TraceMate** ボタンが追加される  
-4. ボタンを押して起動
+3. シェルフに **TM** ボタンが追加される  
+4. ボタンを押して起動  
+
+![シェルフの TM](docs/images/01_shelf_tm.png)
 
 コピー先の例:
 
 `Documents\maya\<バージョン>\ja_JP\scripts\TraceMate\`
 
-## 使い方
-
-シェルフの **TraceMate** を押すと UI が開きます。
-
 ## 注意
 
 - 改変したものを再配布しないでください（[LICENSE](LICENSE) 参照）  
-- アンインストール: 上記 `TraceMate` フォルダを削除し、シェルフの TraceMate ボタンを削除
+- アンインストール: 上記 `TraceMate` フォルダを削除し、シェルフの TM ボタンを削除  
 
 ## ライセンス
 
