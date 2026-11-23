@@ -16,6 +16,7 @@ Maya 向けアニメーション学習ヘルパー（Windows）。
 
 | Maya | ファイル |
 |------|----------|
+| 2025 | `TraceMate_Maya2025_Windows.zip` |
 | 2026 | `TraceMate_Maya2026_Windows.zip` |
 | 2027 | `TraceMate_Maya2027_Windows.zip` |
 
