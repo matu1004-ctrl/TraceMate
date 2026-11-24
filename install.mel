@@ -1,117 +1,21 @@
-// ==============================================================================
-// Trace Mate installer - drag and drop this file onto the Maya viewport
-//
-// Usage:
-//   1. Keep this folder as-is (unzip if needed)
-//   2. Drag install.mel onto the Maya viewport
-//   3. A shelf button "TraceMate" is added
-//
-// Required (next to this MEL):
-//   scripts/trace_mate_canvas.pyc
-//   scripts/trace_mate_step_ui.pyc
-//
-// NOTE: ASCII only. UTF-8 Japanese breaks MEL parsing on Windows Maya.
-// File copy is done in Python (MEL sysFile -copy is unreliable on Windows).
-// ==============================================================================
+// Trace Mate — このリポジトリ直下の install.mel はインストール用ではありません。
+// 緑の Code → Download ZIP では年号別パッケージを取得できません。
+// Releases から Maya 年に合った zip をダウンロードし、その中の install.mel を使ってください。
+// https://github.com/matu1004-ctrl/TraceMate/releases/latest
 
-global proc string TraceMate_installDir()
+global proc TraceMate_RepoRoot_InstallHint()
 {
-    string $info = `whatIs "TraceMate_doInstall"`;
-    // Example: Mel procedure found in: C:/path/TraceMate_Install/install.mel
-    string $parts[];
-    int $n = `tokenize $info " " $parts`;
-    if ($n < 1) {
-        error "TraceMate: could not locate install.mel";
-    }
-    string $melFile = $parts[$n - 1];
-    return `dirname $melFile`;
-}
-
-global proc TraceMate_doInstall()
-{
-    global string $gShelfTopLevel;
-
-    string $srcRoot = `TraceMate_installDir`;
-    $srcRoot = `substituteAllString $srcRoot "\\" "/"`;
-
-    string $mayaScripts = `internalVar -userScriptDir`;
-    $mayaScripts = `substituteAllString $mayaScripts "\\" "/"`;
-    int $len = `size $mayaScripts`;
-    string $last = `substring $mayaScripts $len $len`;
-    if ($last != "/") {
-        $mayaScripts = ($mayaScripts + "/");
-    }
-    string $dest = ($mayaScripts + "TraceMate");
-
-    // One-line Python: shutil copy (more reliable than sysFile -copy on Windows)
-    string $pyCopy = (
-        "import os,shutil;"
-        + "src_dir=os.path.join(r'''" + $srcRoot + "''','scripts');"
-        + "dst_dir=r'''" + $dest + "''';"
-        + "names=('trace_mate_canvas.pyc','trace_mate_step_ui.pyc');"
-        + "os.makedirs(dst_dir,exist_ok=True);"
-        + "missing=[n for n in names if not os.path.isfile(os.path.join(src_dir,n))];"
-        + "assert not missing,('missing in scripts/: '+', '.join(missing));"
-        + "[shutil.copy2(os.path.join(src_dir,n),os.path.join(dst_dir,n)) for n in names];"
-        + "bad=[n for n in names if (not os.path.isfile(os.path.join(dst_dir,n))) or os.path.getsize(os.path.join(dst_dir,n))<1];"
-        + "assert not bad,('copy failed: '+', '.join(bad));"
-        + "print('[TraceMate] copied to '+dst_dir)"
-    );
-    python($pyCopy);
-
-    string $shelf = "";
-    if (`size $gShelfTopLevel` > 0) {
-        $shelf = `tabLayout -q -selectTab $gShelfTopLevel`;
-    }
-    if ($shelf == "") {
-        $shelf = "Custom";
-    }
-
-    if (`shelfLayout -q -exists $shelf`) {
-        string $kids[] = `shelfLayout -q -childArray $shelf`;
-        for ($kid in $kids) {
-            if (`objectTypeUI $kid` == "shelfButton") {
-                string $lab = `shelfButton -q -label $kid`;
-                if ($lab == "TraceMate") {
-                    deleteUI $kid;
-                }
-            }
-        }
-    }
-
-    string $cmd = (
-        "python(\"\\n"
-        + "import sys\\n"
-        + "import importlib\\n"
-        + "p = r'''" + $dest + "'''\\n"
-        + "if p not in sys.path:\\n"
-        + "    sys.path.insert(0, p)\\n"
-        + "import trace_mate_step_ui\\n"
-        + "importlib.reload(trace_mate_step_ui)\\n"
-        + "trace_mate_step_ui.TraceMateStepLauncher.launch()\\n"
-        + "\");"
-    );
-
-    shelfButton
-        -parent $shelf
-        -label "TraceMate"
-        -annotation "Launch Trace Mate Step UI"
-        -image1 "pythonFamily.png"
-        -sourceType "mel"
-        -command $cmd;
-
+    string $msg = "Trace Mate の本体は Releases にあります。\n\n"
+        + "このファイル（リポジトリ直下の install.mel）ではインストールできません。\n"
+        + "緑の Code → Download ZIP は使わず、次を開いてください:\n\n"
+        + "https://github.com/matu1004-ctrl/TraceMate/releases/latest\n\n"
+        + "Maya 2025 / 2026 / 2027 用の zip から、自分の年を選んでください。";
     confirmDialog
-        -title "Trace Mate"
-        -message (
-            "Install complete.\n"
-            + "Shelf button TraceMate was added.\n\n"
-            + "Installed to:\n" + $dest + "\n\n"
-            + "Note: .pyc files only work with the Maya version that built them."
-        )
+        -title "Trace Mate — Releases から入手してください"
+        -message $msg
         -button "OK"
         -defaultButton "OK";
-
-    print ("[TraceMate] installed to: " + $dest + "\n");
+    print ("[TraceMate] " + $msg + "\n");
 }
 
-TraceMate_doInstall;
+TraceMate_RepoRoot_InstallHint();

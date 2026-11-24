@@ -12,19 +12,31 @@ Maya 向けアニメーション学習ヘルパー（Windows）。
 
 ## ダウンロード（必須）
 
-**自分の Maya バージョン用の zip を [Releases](https://github.com/matu1004-ctrl/TraceMate/releases) から取得してください。**
+> **緑の Code → Download ZIP は使わないでください。**  
+> あれは説明用リポジトリの一式で、Maya 年号別の本体ではありません。  
+> **必ず [Releases](https://github.com/matu1004-ctrl/TraceMate/releases/latest) から、自分の Maya 年の zip を取ってください。**
 
-| Maya | ファイル |
-|------|----------|
-| 2025 | `TraceMate_Maya2025_Windows.zip` |
-| 2026 | `TraceMate_Maya2026_Windows.zip` |
-| 2027 | `TraceMate_Maya2027_Windows.zip` |
+| Maya | ダウンロード |
+|------|----------------|
+| 2025 | [TraceMate_Maya2025_Windows.zip](https://github.com/matu1004-ctrl/TraceMate/releases/latest/download/TraceMate_Maya2025_Windows.zip) |
+| 2026 | [TraceMate_Maya2026_Windows.zip](https://github.com/matu1004-ctrl/TraceMate/releases/latest/download/TraceMate_Maya2026_Windows.zip) |
+| 2027 | [TraceMate_Maya2027_Windows.zip](https://github.com/matu1004-ctrl/TraceMate/releases/latest/download/TraceMate_Maya2027_Windows.zip) |
 
-`.pyc` はバージョン専用です。違う年の zip では動きません。
+`.pyc` はバージョン専用です。違う年の zip では `bad magic number` などで動きません。
+
+Maya の年が分からないときは、Script Editor（Python）で次を実行してください。
+
+```python
+import sys
+print(sys.version)
+```
+
+- `3.11...` → 2025 または 2026  
+- `3.13...` → 2027  
 
 ## インストール
 
-1. 上記 zip を解凍する  
+1. 上記の **年別 zip** を解凍する  
 2. フォルダ内の **`install.mel` を Maya のビューポートへドラッグ＆ドロップ**  
 3. シェルフに **TM** ボタンが追加される  
 4. ボタンを押して起動  

@@ -54,13 +54,16 @@ Trace Mate は、**学習補助用のヘルパー**です。学生の練習用�
 
 ### ダウンロード
 
-[Releases](https://github.com/matu1004-ctrl/TraceMate/releases) から、自分の Maya 年の zip を取得します。
+> **GitHub の緑の Code → Download ZIP は使わないでください。**  
+> 年号別の本体は入っていません。必ず [Releases（Latest）](https://github.com/matu1004-ctrl/TraceMate/releases/latest) から取得します。
 
-| Maya | ファイル |
-|------|----------|
-| 2025 | `TraceMate_Maya2025_Windows.zip` |
-| 2026 | `TraceMate_Maya2026_Windows.zip` |
-| 2027 | `TraceMate_Maya2027_Windows.zip` |
+| Maya | ダウンロード |
+|------|----------------|
+| 2025 | [TraceMate_Maya2025_Windows.zip](https://github.com/matu1004-ctrl/TraceMate/releases/latest/download/TraceMate_Maya2025_Windows.zip) |
+| 2026 | [TraceMate_Maya2026_Windows.zip](https://github.com/matu1004-ctrl/TraceMate/releases/latest/download/TraceMate_Maya2026_Windows.zip) |
+| 2027 | [TraceMate_Maya2027_Windows.zip](https://github.com/matu1004-ctrl/TraceMate/releases/latest/download/TraceMate_Maya2027_Windows.zip) |
+
+年が分からないときは Maya の Script Editor（Python）で `import sys; print(sys.version)` を実行します（`3.11` → 2025/2026、`3.13` → 2027）。
 
 ### インストール
 
@@ -320,14 +323,17 @@ Trace Mate は、**学習補助用のヘルパー**です。学生の練習用�
 
 ## 7. よくある質問
 
-**違う Maya 年の zip を使った**  
-→ 動きません。[Releases](https://github.com/matu1004-ctrl/TraceMate/releases) から正しい年を取り直してください。
+**緑の Code → Download ZIP で入れた**  
+→ 年号を選べません。いったん `scripts\TraceMate` を消し、[Releases](https://github.com/matu1004-ctrl/TraceMate/releases/latest) の年別 zip で入れ直してください。
+
+**違う Maya 年の zip を使った / `bad magic number` が出る**  
+→ 動きません。自分の Maya 年の zip を取り直してください（`3.13` なら 2027 用）。
 
 **トレースカメラが無い**  
 → 「1) セットアップ」を完了してください。
 
 **シェルフにボタンが無い**  
-→ `install.mel` をもう一度 D&D してください。
+→ Releases の zip 内の `install.mel` をもう一度 D&D してください。
 
 **入れ直したい**  
 → `scripts\TraceMate` を消してから、再度インストールしてください。
